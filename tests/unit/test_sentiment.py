@@ -515,8 +515,8 @@ def test_empty_and_whitespace_input_no_fabricated_neutral():
     # Test predict_batch DataFrame
     batch_df = pd.DataFrame({"review_text": ["", "   ", "Good item"]})
     pred_df = binary_model.predict_batch(batch_df)
-    assert pred_df["predicted_sentiment"].iloc[0] is None
-    assert pred_df["predicted_sentiment"].iloc[1] is None
+    assert pd.isna(pred_df["predicted_sentiment"].iloc[0])
+    assert pd.isna(pred_df["predicted_sentiment"].iloc[1])
     assert pred_df["predicted_sentiment"].iloc[2] == "positive"
     assert pred_df["sentiment_confidence"].iloc[0] == 0.0
     assert bool(pred_df["is_valid_input"].iloc[0]) is False

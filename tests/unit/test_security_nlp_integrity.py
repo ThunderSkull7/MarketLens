@@ -135,14 +135,14 @@ def test_empty_and_punctuation_prediction_consistency():
     assert scored_df["predicted_sentiment"].iloc[0] == "positive"
     assert bool(scored_df["is_valid_input"].iloc[0]) is True
 
-    assert scored_df["predicted_sentiment"].iloc[1] is None
+    assert pd.isna(scored_df["predicted_sentiment"].iloc[1])
     assert bool(scored_df["is_valid_input"].iloc[1]) is False
     assert scored_df["sentiment_confidence"].iloc[1] == 0.0
 
-    assert scored_df["predicted_sentiment"].iloc[2] is None
+    assert pd.isna(scored_df["predicted_sentiment"].iloc[2])
     assert bool(scored_df["is_valid_input"].iloc[2]) is False
 
-    assert scored_df["predicted_sentiment"].iloc[3] is not None
+    assert not pd.isna(scored_df["predicted_sentiment"].iloc[3])
     assert bool(scored_df["is_valid_input"].iloc[3]) is True
     assert scored_df["sentiment_margin"].iloc[3] == 0.0
 
