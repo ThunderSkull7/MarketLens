@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg/
+.build/
+develop-eggs/
+dist/
+*.egg-info/
+/marketlens.egg-info/
+/htmlcov/
+.coverage
+.coverage.*
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env/
+ENV/
+
+# Secrets and local config
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Tooling and caches
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+
+# Project-specific logs and databases
+marketlens.log
+*.log
+*.db
+*.sqlite3
+
+# Data (excluding .gitkeep and built-in demo dataset)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/raw/synthetic_feedback_demo.csv
+
+# Reports (keep the folder tracked)
+reports/*
+!reports/.gitkeep
+
+# Models and artifacts (keep the folder tracked)
+models/*
+!models/.gitkeep
+*.joblib
+*.pkl
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# CI
+.github/workflows/*.yml.cache
