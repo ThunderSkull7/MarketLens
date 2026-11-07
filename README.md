@@ -4,7 +4,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.11%20%7C%203.12-blue?logo=python&logoColor=white)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/Tests-170%20passed%20(local)-brightgreen)](tests/)
+[![CI](https://github.com/ThunderSkull7/MarketLens/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ThunderSkull7/MarketLens/actions/workflows/ci.yml)
 [![Architecture](https://img.shields.io/badge/Architecture-Modular%20%26%20Decoupled-orange)](docs/architecture.md)
 [![Code Style: Ruff](https://img.shields.io/badge/Code%20Style-Ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
@@ -375,8 +375,23 @@ ruff check .
 ruff format --check .
 ```
 
-### Verified Test Results (Latest Reported Local Run)
-- **Test Suite Status:** **170 passed** in 11.56s (executed on Python 3.12.10, Windows 11 AMD64).
+### Verified Test Results
+
+#### 1. Remote Continuous Integration (GitHub Actions)
+GitHub Actions CI is operational and verified on the `main` branch via [`.github/workflows/ci.yml`](.github/workflows/ci.yml). The latest verified remote matrix execution ([Run #42347002152](https://github.com/ThunderSkull7/MarketLens/actions/runs/42347002152)) completed with **100% passing status** across both target environments:
+
+- **Python 3.11 Matrix Job (`ubuntu-latest`):**
+  - Static Linting: `ruff check .` passed with 0 errors.
+  - Format Verification: `ruff format --check .` passed.
+  - Test Suite: **170 passed** in 23.36s (0 failures, 0 errors).
+- **Python 3.12 Matrix Job (`ubuntu-latest`):**
+  - Static Linting: `ruff check .` passed with 0 errors.
+  - Format Verification: `ruff format --check .` passed.
+  - Test Suite: **170 passed** in 20.61s (0 failures, 0 errors).
+
+#### 2. Local Environment Baseline
+- **Execution Environment:** Python 3.12.10 on Windows 11 AMD64.
+- **Suite Breakdown (170 tests):**
   - Tabular Ingestion & Row Accounting: 45 tests passed.
   - Data Cleaning & Normalization: 25 tests passed.
   - Exploratory Analytics: 20 tests passed.
@@ -385,10 +400,7 @@ ruff format --check .
   - Streamlit Dashboard Integration (`AppTest`): 12 tests passed.
   - Security & Integrity Regressions: 5 tests passed.
   - Integration Pipelines: 8 tests passed.
-- **Static Analysis Status:** `ruff check .` passed with 0 errors across 64 files.
-- **Formatting Status:** `ruff format --check .` passed across 64 files.
-
-*Note: GitHub Actions continuous integration is configured in [`.github/workflows/ci.yml`](.github/workflows/ci.yml) for Python 3.11 and 3.12. Remote workflow execution will trigger upon initial push to GitHub.*
+- **Static Analysis & Formatting:** `ruff check .` and `ruff format --check .` passed cleanly with 0 errors.
 
 ---
 
