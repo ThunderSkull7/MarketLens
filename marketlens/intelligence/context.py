@@ -8,6 +8,7 @@ set of allowed evidence IDs prior to LLM dispatch.
 
 from __future__ import annotations
 
+import json
 import logging
 from dataclasses import dataclass, field
 from typing import Any, Optional
@@ -233,9 +234,13 @@ def prepare_intelligence_context(
                 }
 
                 prod_str = f" | Product: {prod_val}" if prod_val else ""
+                # Encode review text as one JSON string so embedded newlines,
+                # quotes, and prompt-like headings cannot escape the data field.
+                quoted_text = json.dumps(truncated, ensure_ascii=True)
                 sections.append(
                     f"- [{rid}] (Rating: {rating_val} | "
-                    f'Sentiment: {sent_val}{prod_str}): "{truncated}"'
+                    f"Sentiment: {sent_val}{prod_str}) untrusted review text: "
+                    f"{quoted_text}"
                 )
                 sampled_rows.append(row)
 
